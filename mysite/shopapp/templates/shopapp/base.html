@@ -1,0 +1,17 @@
+<title>
+    {% block title %}
+        title
+    {% endblock %}
+</title>
+
+<body>
+{% block body %}
+    something
+{% endblock %}
+
+<div>
+    <ul>
+        {% now 'H:i:l' %}
+    </ul>
+</div>
+</body>

@@ -1,0 +1,27 @@
+{% extends 'myauth/base.html' %}
+
+{% block title %}
+    About me
+{% endblock %}
+
+{% block body %}
+    <h1>User info</h1>
+    {% if user.is_authenticated %}
+        <h2>Details</h2>
+        <p>Username: {{ user.username }}</p>
+        <p>First name: {{ user.first_name }}</p>
+        <p>Last name: {{ user.last_name }}</p>
+        <p>Email: {{ user.email }}</p>
+        <p>Bio: {{ user.profile.bio }}</p>
+        <br>
+        <a href="{% url 'myauth:logout' %}"
+        >logout</a>
+    {% else %}
+        <h2>User is anonymous</h2>
+        <li><a href="{% url 'myauth:register' %}"
+        >register</a></li>
+        <li><a href="{% url 'myauth:login' %}"
+        >login</a></li>
+
+    {% endif %}
+{% endblock %}

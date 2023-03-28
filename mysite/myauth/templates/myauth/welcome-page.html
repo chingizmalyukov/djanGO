@@ -1,0 +1,17 @@
+{% extends 'myauth/base.html' %}
+
+{% block title %}
+    Welcome page
+{% endblock %}
+
+{% block body %}
+
+    <img src="/media/images/welcome_W6pTokq.jpg">
+
+
+
+    <br>
+    <li><a href="{% url 'myauth:about-me' %}"
+    >next</a></li>
+
+{% endblock %}

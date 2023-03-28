@@ -1,0 +1,51 @@
+{% extends 'shopapp/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+            Products List
+        {% endblock %}
+    </title>
+</head>
+<body>
+{% block body %}
+    <h1>Products:</h1>
+    {% if products %}
+        <div>
+            {% for product in products %}
+                <div>
+                    <ul>
+                        <li>
+                            <p>
+                                <a href="{% url 'shopapp:product_details' pk=product.pk %}"
+                                >{{ product.name }}</a>
+                                <b>Price:</b> ${{ product.price }}
+                                <b>Discount:</b> {% firstof product.discount 'no discount' %}
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            {% endfor %}
+
+        </div>
+    {% else %}
+        <h3>
+            No products yet!
+        </h3>
+
+    {% endif %}
+
+    {% if perms.shopapp.add_product %}
+        <div>
+            <a href="{% url 'shopapp:product_create' %}"
+            >create a new product</a>
+        </div>
+    {% endif %}
+
+
+
+{% endblock %}
+</body>
+</html>
