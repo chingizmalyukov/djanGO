@@ -115,16 +115,10 @@ class ProductUpdateView(UserPassesTestMixin, PermissionRequiredMixin, UpdateView
         if self.request.user.is_superuser:
             return True
         else:
-
             perms = self.get_permission_required()
-            # created_by = (Product.objects
-            #     .select_related('created_by')
-            #     .prefetch_related('pk')
-            #     )
-            # # created_by = Product.objects.get('created_by_id').all
-            # print(f'CREATED BY {created_by}')
             if self.request.user.has_perms(perms):
-                return True
+                return self.request.user == self.get_object().created_by
+
 
     model = Product
     fields = 'name', 'price', 'description', 'discount'
