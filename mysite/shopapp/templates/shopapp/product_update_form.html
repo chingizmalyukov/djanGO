@@ -15,6 +15,6 @@
     </div>
     <div>
         <a href="{% url 'shopapp:product_details' pk=object.pk %}"
-        >back to product #{{ object.pk }}</a>
+        >back to product <b>{{ object.name }}</b></a>
     </div>
 {% endblock %}
